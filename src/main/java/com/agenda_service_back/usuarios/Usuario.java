@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Table(name = "usuario")
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -37,7 +38,7 @@ public class Usuario {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_endereco_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_endereco_id",nullable = false)
     private Endereco endereco;
 }

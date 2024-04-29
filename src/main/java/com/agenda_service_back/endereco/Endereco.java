@@ -1,11 +1,14 @@
 package com.agenda_service_back.endereco;
 
+import com.agenda_service_back.usuarios.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,5 +41,8 @@ public class Endereco implements Serializable {
 
     @Column(name = "endereco_bairro")
     private String endereco_bairro;
+
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Usuario> usuarios;
 
 }
