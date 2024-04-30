@@ -1,6 +1,7 @@
 package com.agenda_service_back.prestador;
 
 import com.agenda_service_back.endereco.Endereco;
+import com.agenda_service_back.telefone.Telefone;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,8 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Data //getter setter tostring equals hashcode
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,7 +49,8 @@ public class Prestador implements Serializable {
     @JoinColumn(name = "prestador_endereco_id",nullable = false)
     private Endereco endereco;
 
-
+    @OneToMany(mappedBy = "telefone_id",fetch = FetchType.LAZY)
+    private List<Telefone> telefones;
 
 
 }
