@@ -28,6 +28,12 @@ public class Servico implements Serializable {
     @Column(name = "servico_informacoes_extras")
     private String servico_informacoes_extras;
 
+    @Column(name = "servico_descricao")
+    private String servico_descricao;
+
+    @Column(name = "servico_preco")
+    private Double servico_preco;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "servico_categoria_id",nullable = false)
     private Categoria categoria;

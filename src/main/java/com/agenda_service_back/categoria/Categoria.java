@@ -1,9 +1,12 @@
 package com.agenda_service_back.categoria;
 
+import com.agenda_service_back.servico.Servico;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Data //-Getters -Setters Hash Equals toString
 //@Getter
 //@Setter
@@ -24,5 +27,8 @@ public class Categoria implements Serializable {
 
     @Column(name = "categoria_descricao")
     private String categoria_descricao;
+
+    @OneToMany(mappedBy = "servico_id",fetch = FetchType.LAZY)
+    private List<Servico> servicos;
 
 }

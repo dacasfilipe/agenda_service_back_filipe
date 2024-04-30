@@ -1,6 +1,7 @@
 package com.agenda_service_back.prestador;
 
 import com.agenda_service_back.endereco.Endereco;
+import com.agenda_service_back.servico.Servico;
 import com.agenda_service_back.telefone.Telefone;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -52,5 +53,7 @@ public class Prestador implements Serializable {
     @OneToMany(mappedBy = "telefone_id",fetch = FetchType.LAZY)
     private List<Telefone> telefones;
 
+    @OneToMany(mappedBy = "servico_id",fetch = FetchType.LAZY)
+    private List<Servico> servicos;
 
 }
