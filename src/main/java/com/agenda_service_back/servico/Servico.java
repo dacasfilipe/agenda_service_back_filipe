@@ -42,6 +42,4 @@ public class Servico implements Serializable {
     @JoinColumn(name = "servico_prestador_id",nullable = false)
     private Prestador prestador;
 
-
-
 }
