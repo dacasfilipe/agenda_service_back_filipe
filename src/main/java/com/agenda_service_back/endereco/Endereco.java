@@ -1,5 +1,6 @@
 package com.agenda_service_back.endereco;
 
+import com.agenda_service_back.prestador.Prestador;
 import com.agenda_service_back.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -44,5 +45,8 @@ public class Endereco implements Serializable {
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
+
+    @OneToMany(mappedBy = "prestador", fetch = FetchType.LAZY)
+    private List<Prestador> prestadores;
 
 }

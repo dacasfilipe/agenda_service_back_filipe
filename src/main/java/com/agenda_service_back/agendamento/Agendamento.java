@@ -1,6 +1,7 @@
 package com.agenda_service_back.agendamento;
 
 import com.agenda_service_back.servico.Servico;
+import com.agenda_service_back.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class Agendamento implements Serializable {
     private LocalDate agendamento_data;
 
     @Temporal(TemporalType.TIME)
+    @Column(name = "agendamento_hora")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime agendamento_hora;
 
@@ -39,5 +41,5 @@ public class Agendamento implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agendamento_servico_id", nullable = false)
     private Servico servico;
-
+}
 
