@@ -41,13 +41,13 @@ public class Servico implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "servico_categoria_id", nullable = false)
-    private Categoria categoria;
+    private Categoria servico_categoria_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "servico_prestador_id", nullable = false)
-    private Prestador prestador;
+    private Prestador servico_prestador_id;
 
-    @OneToMany(mappedBy = "agendamento", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendamento_servico_id", fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos;
 
 }

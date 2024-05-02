@@ -17,7 +17,7 @@ public class CategoriaDTO implements Serializable {
     private Long categoria_id;
     private String categoria_nome;
     private String categoria_descricao;
-   // private List<ServicoDTO> servicos;
+    //private List<ServicoDTO> servicos;
 
 }
 

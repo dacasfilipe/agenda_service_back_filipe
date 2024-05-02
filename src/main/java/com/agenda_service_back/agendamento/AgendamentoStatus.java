@@ -3,7 +3,7 @@ package com.agenda_service_back.agendamento;
 public enum AgendamentoStatus {
     PENDENTE("Pendente"),
     CONCLUIDO("Concluído"),
-    EM_ESPERA("Em Espera");
+    CANCELADO("cancelado");
 
     private final String descricao;
 

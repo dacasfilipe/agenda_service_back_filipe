@@ -44,7 +44,7 @@ public class Usuario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_endereco_id", nullable = false)
-    private Endereco endereco;
+    private Endereco usuario_endereco_id;
 
     @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.LAZY)
     private List<Telefone> telefones;

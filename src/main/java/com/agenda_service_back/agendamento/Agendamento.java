@@ -21,9 +21,12 @@ public class Agendamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "agendamento_id")
+    private long agendamento_id;
+
 
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @Column(name = "agendamento_data")
     private LocalDate agendamento_data;
 
     @Temporal(TemporalType.TIME)
@@ -31,15 +34,16 @@ public class Agendamento implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime agendamento_hora;
 
-
     @Enumerated(EnumType.STRING)
+    @Column(name = "agendamento_status")
+    private AgendamentoStatus agendamento_status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agendamento_usuario_id", nullable = false)
-    private Usuario usuario;
+    private Usuario agendamento_usuario_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agendamento_servico_id", nullable = false)
-    private Servico servico;
+    private Servico agendamento_servico_id;
 }
 
