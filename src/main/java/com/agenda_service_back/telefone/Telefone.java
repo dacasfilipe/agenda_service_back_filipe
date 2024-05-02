@@ -32,10 +32,10 @@ public class Telefone implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "telefone_usuario_id", nullable = false)
-    private Usuario usuario;
+    private Usuario telefone_usuario_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "telefone_prestador_id", nullable = false)
-    private Prestador prestador;
+    private Prestador telefone_prestador_id;
 
 }

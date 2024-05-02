@@ -43,10 +43,10 @@ public class Endereco implements Serializable {
     @Column(name = "endereco_bairro")
     private String endereco_bairro;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario_endereco_id", fetch = FetchType.LAZY)
     private List<Usuario> usuarios;
 
-    @OneToMany(mappedBy = "prestador", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "prestador_endereco_id", fetch = FetchType.LAZY)
     private List<Prestador> prestadores;
 
 }

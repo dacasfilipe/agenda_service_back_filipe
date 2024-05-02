@@ -55,7 +55,7 @@ public class Prestador implements Serializable {
     @OneToMany(mappedBy = "servico", fetch = FetchType.LAZY)
     private List<Servico> servicos;
 
-    @OneToMany(mappedBy = "telefone", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "telefone_prestador_id", fetch = FetchType.LAZY)
     private List<Telefone> telefones;
 }
 

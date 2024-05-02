@@ -41,19 +41,16 @@ public class Usuario {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-    @OneToOne
-    @JoinColumn(name = "usuario_endereco_id")
-    private Endereco endereco;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "usuario_endereco_id", nullable = false)
-//    private Endereco endereco;
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_endereco_id", nullable = false)
+    private Endereco endereco;
+
+    @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.LAZY)
     private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "agendamento", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendamento_usuario_id", fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos;
 
-    @OneToMany(mappedBy = "endereco", fetch = FetchType.LAZY)
-    private List<Endereco> enderecos;
+
 }
