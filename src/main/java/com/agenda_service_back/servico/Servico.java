@@ -47,7 +47,7 @@ public class Servico implements Serializable {
     @JoinColumn(name = "servico_prestador_id", nullable = false)
     private Prestador servico_prestador_id;
 
-    @OneToMany(mappedBy = "agendamento_servico_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendamento_servico_id", cascade = CascadeType.ALL)
     private List<Agendamento> agendamentos;
 
 }

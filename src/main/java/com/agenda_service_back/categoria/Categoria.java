@@ -2,10 +2,12 @@ package com.agenda_service_back.categoria;
 
 import com.agenda_service_back.servico.Servico;
 import com.agenda_service_back.telefone.Telefone;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data //-Getters -Setters Hash Equals toString
@@ -29,7 +31,9 @@ public class Categoria implements Serializable {
     @Column(name = "categoria_descricao")
     private String categoria_descricao;
 
-    @OneToMany(mappedBy = "servico_categoria_id",fetch = FetchType.EAGER)
-    private List<Servico> servicos;
+//    @JsonIgnore
+    @OneToMany(mappedBy = "servico_categoria_id",cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Servico> servicos = new ArrayList<Servico>();;
+
 
 }
