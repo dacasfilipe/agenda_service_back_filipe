@@ -1,9 +1,5 @@
 package com.agenda_service_back.endereco;
 
-import com.agenda_service_back.categoria.Categoria;
-import com.agenda_service_back.categoria.CategoriaDTO;
-import com.agenda_service_back.endereco.EnderecoDTO;
-import com.agenda_service_back.endereco.EnderecoMapper;
 import com.agenda_service_back.endereco.exceptions.CepNaoEncontradoException;
 import com.agenda_service_back.endereco.exceptions.EnderecoNotFoundException;
 import com.agenda_service_back.endereco.exceptions.RuaNaoEncontradoException;
@@ -25,6 +21,12 @@ public class EnderecoService {
     @Transactional
     public EnderecoDTO salvarEndereco(EnderecoDTO enderecoDTO) {
         Endereco endereco = enderecoMapper.toEntity(enderecoDTO);
+        endereco = enderecoRepository.save(endereco);
+        return enderecoMapper.toDTO(endereco);
+    }
+
+    @Transactional
+    public EnderecoDTO salvarEnderecoEntity(Endereco endereco) {
         endereco = enderecoRepository.save(endereco);
         return enderecoMapper.toDTO(endereco);
     }

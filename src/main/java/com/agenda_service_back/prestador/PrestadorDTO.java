@@ -1,5 +1,6 @@
 package com.agenda_service_back.prestador;
 
+import com.agenda_service_back.endereco.Endereco;
 import com.agenda_service_back.endereco.EnderecoDTO;
 import com.agenda_service_back.servico.ServicoDTO;
 import com.agenda_service_back.telefone.TelefoneDTO;
@@ -34,6 +35,7 @@ public class PrestadorDTO implements Serializable {
     private List<ServicoDTO> servicos;
     @JsonIgnore
     private List<TelefoneDTO> telefones;
+
 
 
 }

@@ -47,6 +47,6 @@ public class Endereco implements Serializable {
     private List<Usuario> usuarios;
 
     @OneToMany(mappedBy = "prestador_endereco_id", fetch = FetchType.EAGER)
-    private List<Prestador> prestadores;
+    private Long prestadores;
 
 }

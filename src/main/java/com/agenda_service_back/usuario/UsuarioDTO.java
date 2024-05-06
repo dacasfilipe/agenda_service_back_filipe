@@ -25,6 +25,8 @@ public class UsuarioDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/YYYY")
     private LocalDate usuarioDataNascimento;
 
+    private String usuarioSenha;
+
     // No password field in DTO for security reasons
 
     private EnderecoDTO usuarioEndereco;

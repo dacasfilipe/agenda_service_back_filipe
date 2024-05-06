@@ -2,7 +2,6 @@ package com.agenda_service_back.usuario;
 
 import com.agenda_service_back.agendamento.Agendamento;
 import com.agenda_service_back.endereco.Endereco;
-import com.agenda_service_back.servico.Servico;
 import com.agenda_service_back.telefone.Telefone;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -41,10 +40,9 @@ public class Usuario {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_endereco_id", nullable = false)
-    private Endereco usuario_endereco_id;
+    private Long usuario_endereco_id;
 
     @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.EAGER)
     private List<Telefone> telefones;
