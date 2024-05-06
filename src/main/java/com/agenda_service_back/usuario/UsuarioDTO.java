@@ -31,6 +31,4 @@ public class UsuarioDTO {
     private List<TelefoneDTO> telefones;
 
 
-
-    // ...
 }

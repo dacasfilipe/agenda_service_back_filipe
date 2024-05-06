@@ -30,11 +30,11 @@ public class Telefone implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "(XX) XXXX-XXXX")
     private String numero;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_usuario_id", nullable = false)
     private Usuario telefone_usuario_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_prestador_id", nullable = false)
     private Prestador telefone_prestador_id;
 
