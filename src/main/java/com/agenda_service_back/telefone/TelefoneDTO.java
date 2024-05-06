@@ -1,5 +1,6 @@
 package com.agenda_service_back.telefone;
 
+import com.agenda_service_back.prestador.PrestadorDTO;
 import com.agenda_service_back.usuario.UsuarioDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TelefoneDTO {
-
+    private static final long serialVersionUID = 1L;
     private Long telefoneId;
 
     private String numero;
