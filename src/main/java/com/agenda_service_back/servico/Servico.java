@@ -39,11 +39,11 @@ public class Servico implements Serializable {
     @Column(name = "servico_informacoes_extras", nullable = false, length = 255)
     private String servico_informacoes_extras;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servico_categoria_id", nullable = false)
     private Categoria servico_categoria_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servico_prestador_id", nullable = false)
     private Prestador servico_prestador_id;
 

@@ -52,10 +52,10 @@ public class Prestador implements Serializable {
     @JoinColumn(name = "prestador_endereco_id")
     private Endereco prestador_endereco_id;
 
-    @OneToMany(mappedBy = "servico_prestador_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "servico_prestador_id", fetch = FetchType.EAGER)
     private List<Servico> servicos;
 
-    @OneToMany(mappedBy = "telefone_prestador_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "telefone_prestador_id", fetch = FetchType.EAGER)
     private List<Telefone> telefones;
 }
 
