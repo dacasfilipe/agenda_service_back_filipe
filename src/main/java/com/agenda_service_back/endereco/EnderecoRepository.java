@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco,Long> {
-    @Query("SELECT e FROM Endereco e WHERE e.endereco_rua = :rua")
+    @Query("SELECT e FROM Endereco e WHERE e.endereco_rua LIKE CONCAT('%', :rua, '%')")
     List<Endereco> findByRua(@Param("rua") String rua);
 
     @Query("SELECT e FROM Endereco e WHERE e.endereco_cep = :cep")

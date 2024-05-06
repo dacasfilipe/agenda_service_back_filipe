@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/enderecos")
@@ -50,6 +51,14 @@ public class EnderecoController {
     @GetMapping("/cep/{cep}")
     public ResponseEntity<List<EnderecoDTO>> buscarEnderecosPorCep(@PathVariable String cep) {
         List<EnderecoDTO> enderecosDTO = enderecoService.buscarEnderecosPorCep(cep);
+
         return new ResponseEntity<>(enderecosDTO, HttpStatus.OK);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<EnderecoDTO> updateEndereco(@PathVariable Long id, @Valid @RequestBody EnderecoDTO enderecoDTO) {
+        // Update logic using id and enderecoDTO
+        EnderecoDTO atualizadoEnderecoDTO = enderecoService.update(id, enderecoDTO);
+        return new ResponseEntity<>(atualizadoEnderecoDTO, HttpStatus.OK);
+    }
+
 }

@@ -46,10 +46,10 @@ public class Usuario {
     @JoinColumn(name = "usuario_endereco_id", nullable = false)
     private Endereco usuario_endereco_id;
 
-    @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.EAGER)
     private List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "agendamento_usuario_id", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agendamento_usuario_id", fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
 
 
