@@ -1,6 +1,10 @@
 package com.agenda_service_back.servico;
 
+import com.agenda_service_back.categoria.Categoria;
+import com.agenda_service_back.categoria.CategoriaDTO;
 import com.agenda_service_back.categoria.CategoriaMapper;
+import com.agenda_service_back.prestador.Prestador;
+import com.agenda_service_back.prestador.PrestadorDTO;
 import com.agenda_service_back.prestador.PrestadorMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,16 +19,14 @@ public interface ServicoMapper {
     ServicoMapper INSTANCE = Mappers.getMapper(ServicoMapper.class);
 
     @Mappings({
-            @Mapping(source = "servicoDTO.servicoCategoria", target = "servico.servicoCategoriaId"),
-            @Mapping(source = "servicoDTO.servicoPrestador", target = "servico.servicoPrestadorId")
+            @Mapping(source = "servicoDTO.servicoCategoria", target = "servico.servico_categoria_id", using = CategoriaMapper.class),  // Use CategoriaMapper for conversion
+            @Mapping(source = "servicoDTO.servicoPrestador", target = "servico.servico_prestador_id", using = PrestadorMapper.class)  // Use PrestadorMapper for conversion
     })
     Servico toEntity(ServicoDTO servicoDTO);
 
     @Mappings({
-            @Mapping(source = "servico.servicoCategoriaId.categoriaId", target = "servicoDTO.servicoCategoria.categoriaId"),
-            @Mapping(source = "servico.servicoCategoriaId.categoriaNome", target = "servicoDTO.servicoCategoria.categoriaNome"),
-            @Mapping(source = "servico.servicoPrestadorId.prestadorId", target = "servicoDTO.servicoPrestador.prestadorId"),
-            @Mapping(source = "servico.servicoPrestadorId.prestadorNome", target = "servicoDTO.servicoPrestador.prestadorNome")
+            @Mapping(source = "servico.servico_categoria_id", target = "servicoDTO.servicoCategoria", using = CategoriaMapper.class),  // Use CategoriaMapper for conversion
+            @Mapping(source = "servico.servico_prestador_id", target = "servicoDTO.servicoPrestador", using = PrestadorMapper.class)  // Use PrestadorMapper for conversion
     })
     ServicoDTO toDTO(Servico servico);
 
@@ -32,4 +34,3 @@ public interface ServicoMapper {
 
     // Add mappings for specific use cases if needed (e.g., by category ID, by prestador ID)
 }
-

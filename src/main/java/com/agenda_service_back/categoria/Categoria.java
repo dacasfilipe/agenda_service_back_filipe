@@ -31,9 +31,9 @@ public class Categoria implements Serializable {
     @Column(name = "categoria_descricao")
     private String categoria_descricao;
 
-//    @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "servico_categoria_id",cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
-    private List<Servico> servicos = new ArrayList<Servico>();;
+    private List<Servico> servicos;;
 
 
 }

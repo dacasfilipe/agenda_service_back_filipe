@@ -19,14 +19,14 @@ public interface UsuarioMapper {
     UsuarioMapper INSTANCE = Mappers.getMapper(UsuarioMapper.class);
 
     @Mappings({
-            @Mapping(source = "usuarioDTO.usuarioEndereco", target = "usuario.usuarioEndereco", qualifiedByName = "enderecoToEnderecoEntity"),
-            @Mapping(source = "usuarioDTO.telefones", target = "usuario.telefones", qualifiedByName = "telefonesDTOToTelefonesEntity")
+            @Mapping(source = "usuarioDTO.usuarioEndereco", target = "usuario.usuario_endereco_id", qualifiedByName = "enderecoToEnderecoEntity"),
+            @Mapping(source = "usuarioDTO.telefones", target = "usuario.telefone_usuario_id", qualifiedByName = "telefonesDTOToTelefonesEntity")
     })
     Usuario toEntity(UsuarioDTO usuarioDTO);
 
     @Mappings({
-            @Mapping(source = "usuario.usuarioEndereco", target = "usuarioDTO.usuarioEndereco", qualifiedByName = "enderecoEntityToEnderecoDTO"),
-            @Mapping(source = "usuario.telefones", target = "usuarioDTO.telefones", qualifiedByName = "telefonesEntityToTelefonesDTO")
+            @Mapping(source = "usuario.usuario_endereco_id", target = "usuarioDTO.usuarioEndereco", qualifiedByName = "enderecoEntityToEnderecoDTO"),
+            @Mapping(source = "usuario.telefone_usuario_id", target = "usuarioDTO.telefones", qualifiedByName = "telefonesEntityToTelefonesDTO")
     })
     UsuarioDTO toDTO(Usuario usuario);
 
