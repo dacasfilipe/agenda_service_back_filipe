@@ -16,6 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor //usar com cuidado em tabelas com chave estrangeira
 @NoArgsConstructor
 @Entity
+@DiscriminatorColumn(name = "referencia_tipo") // Define discriminator column
 @Table(name = "telefone")
 public class Telefone implements Serializable {
 
@@ -31,11 +32,11 @@ public class Telefone implements Serializable {
     private String numero;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "telefone_usuario_id", nullable = false)
-    private Usuario telefone_usuario_id;
+    @JoinColumn(name = "referencia_id", nullable = false)
+    private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "telefone_prestador_id", nullable = false)
-    private Prestador telefone_prestador_id;
+    @JoinColumn(name = "referencia_id", nullable = false)
+    private Prestador prestador;
 
 }

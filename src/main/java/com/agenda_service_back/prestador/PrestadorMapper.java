@@ -19,14 +19,14 @@ public interface PrestadorMapper {
     PrestadorMapper INSTANCE = Mappers.getMapper(PrestadorMapper.class);
 
     @Mappings({
-            @Mapping(source = "prestadorDTO.prestadorEndereco", target = "prestador.endereco"),  // Map EnderecoDTO to Endereco
+            @Mapping(source = "prestadorDTO.prestadorEndereco", target = "prestador.prestador_endereco_id"),  // Map EnderecoDTO to Endereco
             @Mapping(source = "prestadorDTO.servicos", target = "prestador.servicos"),
             @Mapping(source = "prestadorDTO.telefones", target = "prestador.telefones")
     })
     Prestador toEntity(PrestadorDTO prestadorDTO);
 
     @Mappings({
-            @Mapping(source = "prestador.endereco", target = "prestadorDTO.prestadorEndereco", using = EnderecoMapper.class),  // Use EnderecoMapper for conversion
+            @Mapping(source = "prestador.endereco", target = "prestadorDTO.prestadorEndereco"),  // Use EnderecoMapper for conversion
             @Mapping(source = "prestador.servicos", target = "prestadorDTO.servicos"),
             @Mapping(source = "prestador.telefones", target = "prestadorDTO.telefones")
     })

@@ -4,10 +4,12 @@ import com.agenda_service_back.categoria.CategoriaDTO;
 import com.agenda_service_back.categoria.Categoria;
 import com.agenda_service_back.categoria.CategoriaMapper;
 import com.agenda_service_back.categoria.CategoriaRepository;
+import com.agenda_service_back.categoria.exceptions.CategoriaNaoEncontradaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,10 +29,13 @@ public class CategoriaService {
                 .collect(Collectors.toList());
     }
     // Buscando uma categoria por id
-    public CategoriaDTO findById(Long id) {
-        Categoria categoria = categoriaRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada"));
-        return categoriaMapper.toDTO(categoria);
+    public Categoria buscarCategoriaPorId(Long categoriaId) {
+        Optional<Categoria> categoriaOptional = categoriaRepository.findById(categoriaId);
+        if (categoriaOptional.isPresent()) {
+            return categoriaOptional.get();
+        } else {
+            throw new CategoriaNaoEncontradaException("Categoria com ID " + categoriaId + " não encontrada.");
+        }
     }
     //Criando uma nova Categoria
     public CategoriaDTO create(CategoriaDTO categoriaDTO) {

@@ -30,7 +30,7 @@ public class ServicoService {
 //        validateServico(servicoDTO);
 
         Categoria categoria = categoriaService.buscarCategoriaPorId(servicoDTO.getServicoCategoria().getCategoria_id());
-//        Prestador prestador = prestadorService.buscarPrestadorPorId(servicoDTO.getServicoPrestador().getPrestadorEndereco().getEndereco_id());
+        Prestador prestador = prestadorService.buscarPrestadorPorId(servicoDTO.getServicoPrestador().getPrestadorEndereco().getEndereco_id());
 
         Servico servico = new Servico();
         servico.setServico_nome(servicoDTO.getServicoNome());

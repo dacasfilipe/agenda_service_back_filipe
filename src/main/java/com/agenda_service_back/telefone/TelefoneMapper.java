@@ -12,8 +12,8 @@ public interface TelefoneMapper {
     TelefoneMapper INSTANCE = Mappers.getMapper(TelefoneMapper.class);
 
     @Mappings({
-            @Mapping(source = "telefone.telefone_usuario_id", target = "telefoneDTO.usuarioId"),
-            @Mapping(source = "telefone.telefone_prestador_id", target = "telefoneDTO.prestadorId")
+            @Mapping(source = "telefone.telefone_usuario_id", target = "usuarioId"),  // Directly set usuarioId field
+            @Mapping(source = "telefone.telefone_prestador_id", target = "prestadorId")  // Directly set prestadorId field
     })
     TelefoneDTO toDTO(Telefone telefone);
 

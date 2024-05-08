@@ -19,14 +19,14 @@ public interface ServicoMapper {
     ServicoMapper INSTANCE = Mappers.getMapper(ServicoMapper.class);
 
     @Mappings({
-            @Mapping(source = "servicoDTO.servicoCategoria", target = "servico.servico_categoria_id", using = CategoriaMapper.class),  // Use CategoriaMapper for conversion
-            @Mapping(source = "servicoDTO.servicoPrestador", target = "servico.servico_prestador_id", using = PrestadorMapper.class)  // Use PrestadorMapper for conversion
+            @Mapping(source = "servicoDTO.servicoCategoria", target = "servico.servico_categoria_id" ),  // Use CategoriaMapper for conversion
+            @Mapping(source = "servicoDTO.servicoPrestador", target = "servico.servico_prestador_id")  // Use PrestadorMapper for conversion
     })
     Servico toEntity(ServicoDTO servicoDTO);
 
     @Mappings({
-            @Mapping(source = "servico.servico_categoria_id", target = "servicoDTO.servicoCategoria", using = CategoriaMapper.class),  // Use CategoriaMapper for conversion
-            @Mapping(source = "servico.servico_prestador_id", target = "servicoDTO.servicoPrestador", using = PrestadorMapper.class)  // Use PrestadorMapper for conversion
+            @Mapping(source = "servico.servico_categoria_id", target = "servicoDTO.servicoCategoria"),  // Use CategoriaMapper for conversion
+            @Mapping(source = "servico.servico_prestador_id", target = "servicoDTO.servicoPrestador")  // Use PrestadorMapper for conversion
     })
     ServicoDTO toDTO(Servico servico);
 

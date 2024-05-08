@@ -14,6 +14,8 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
+    @Autowired
+    private CategoriaMapper categoriaMapper;
 
     @GetMapping
     public ResponseEntity<List<CategoriaDTO>> getAllCategorias() {
@@ -23,7 +25,9 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> getCategoriaById(@PathVariable Long id) {
-        CategoriaDTO categoriaDTO = categoriaService.findById(id);
+        Categoria categoria = categoriaService.buscarCategoriaPorId(id);
+        // Convert Categoria to CategoriaDTO before returning
+        CategoriaDTO categoriaDTO = categoriaMapper.toDTO(categoria); // Assuming CategoriaDTO has a constructor taking Categoria
         return ResponseEntity.ok(categoriaDTO);
     }
 
