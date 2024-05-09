@@ -26,6 +26,9 @@ public class Usuario {
     @Column(name = "usuario_id")
     private long usuario_id;
 
+    @Column(name = "usuario_nome")
+    private String usuario_nome;
+
     @CPF
     @Column(name = "usuario_cpf",unique = true)
     private String usuario_cpf;

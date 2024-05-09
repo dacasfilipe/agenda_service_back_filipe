@@ -1,5 +1,6 @@
 package com.agenda_service_back.usuario;
 
+import com.agenda_service_back.agendamento.AgendamentoService;
 import com.agenda_service_back.endereco.Endereco;
 import com.agenda_service_back.endereco.EnderecoDTO;
 import com.agenda_service_back.endereco.EnderecoService;
@@ -34,8 +35,11 @@ public class UsuarioService {
     @Autowired
     private TelefoneService telefoneService;
 
+//    @Autowired
+//    private ServicoService servicoService;
+
     @Autowired
-    private ServicoService servicoService;
+    private AgendamentoService agendamentoService;
 
     @Autowired
     private UsuarioMapper usuarioMapper;
@@ -45,17 +49,18 @@ public class UsuarioService {
 
     @Transactional
     public UsuarioDTO salvarUsuario(UsuarioDTO usuarioDTO) {
-        EnderecoDTO enderecoDTO = enderecoService.salvarEndereco(usuarioDTO.getUsuarioEndereco());
+//        EnderecoDTO enderecoDTO = enderecoService.salvarEndereco(enderecoDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
-        usuario.setUsuario_endereco_id(enderecoDTO.getEndereco_id());
+
+//        usuario.setUsuario_endereco_id(enderecoDTO.getEndereco_id());
         usuario = usuarioRepository.save(usuario);
 
-        for (TelefoneDTO telefoneDTO : usuarioDTO.getTelefones()) {
-            Telefone telefone = new Telefone();
-            telefone.setNumero(telefoneDTO.getNumero());
-            telefone.setTelefone_usuario_id(usuario);
-            telefoneService.salvarTelefone(telefone);
-        }
+//        for (TelefoneDTO telefoneDTO : usuarioDTO.getTelefones()) {
+//            Telefone telefone = new Telefone();
+//            telefone.setNumero(telefoneDTO.getNumero());
+//            telefone.setTelefone_usuario_id(usuario);
+//            telefoneService.salvarTelefone(telefone);
+//        }
 
         return usuarioMapper.toDTO(usuario);
     }
