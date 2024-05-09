@@ -42,34 +42,34 @@ public class PrestadorService {
     public Prestador salvarPrestador(PrestadorDTO prestadorDTO) {
         Prestador prestador = prestadorMapper.toEntity(prestadorDTO);
 
-        // Salvar endereço (se existir)
-        EnderecoDTO enderecoDTO = prestadorDTO.getPrestadorEndereco();
-        if (enderecoDTO != null) {
-            Endereco endereco = enderecoMapper.toEntity(enderecoDTO); // Convert enderecoDTO to entity
-            endereco = enderecoService.salvarEnderecoEntity(endereco); // Save the endereco entity
-            prestador.setPrestador_endereco_id(endereco.getEndereco_id()); // Set the relationship
-        }
+//        // Salvar endereço (se existir)
+//        EnderecoDTO enderecoDTO = prestadorDTO.getPrestadorEndereco();
+//        if (enderecoDTO != null) {
+//            Endereco endereco = enderecoMapper.toEntity(enderecoDTO); // Convert enderecoDTO to entity
+//            endereco = enderecoService.salvarEnderecoEntity(endereco); // Save the endereco entity
+//            prestador.setEndereco(endereco); // Set the relationship
+//        }
 
-        // Salvar telefones (se existirem)
-        List<TelefoneDTO> telefoneDTOs = prestadorDTO.getTelefones();
-        if (telefoneDTOs != null && !telefoneDTOs.isEmpty()) {
-            List<Telefone> telefones = telefoneService.salvarTelefones(telefoneDTOs, prestador);
-            prestador.setTelefones(telefones);
-        }
+//        // Salvar telefones (se existirem)
+//        List<TelefoneDTO> telefoneDTOs = prestadorDTO.getTelefones();
+//        if (telefoneDTOs != null && !telefoneDTOs.isEmpty()) {
+//            List<Telefone> telefones = telefoneService.salvarTelefones(telefoneDTOs, prestador);
+//            prestador.setTelefones(telefones);
+//        }
 
         // Salvar serviços (se existirem)
-        List<ServicoDTO> servicoDTOs = prestadorDTO.getServicos();
-        if (servicoDTOs != null && !servicoDTOs.isEmpty()) {
-            List<Servico> servicos = servicoService.salvarServicos(servicoDTOs, prestador);
-            prestador.setServicos(servicos);
-        }
+//        List<ServicoDTO> servicoDTOs = prestadorDTO.getServicos();
+//        if (servicoDTOs != null && !servicoDTOs.isEmpty()) {
+//            List<Servico> servicos = servicoService.salvarServicos(servicoDTOs, prestador);
+//            prestador.setServicos(servicos);
+//        }
 
         return prestadorRepository.save(prestador);
     }
 
-    public PrestadorDTO buscarPrestadorPorId(Long prestadorId) {
+    public Prestador buscarPrestadorPorId(Long prestadorId) {
         Prestador prestador = prestadorRepository.findById(prestadorId).orElseThrow(() -> new PrestadorNotFoundException(prestadorId));
-        return prestadorMapper.toDTO(prestador);
+        return prestador;
     }
 
     public List<PrestadorDTO> buscarTodosPrestadores() {
@@ -89,19 +89,19 @@ public class PrestadorService {
         prestador.setPrestador_senha(prestadorDTO.getPrestadorSenha()); // Consider security implications
         prestador.setPrestador_razao_social(prestadorDTO.getPrestadorRazaoSocial());
 
-        // Update Endereco (if provided)
-        Endereco endereco = prestadorDTO.getPrestadorEndereco();
-        if (endereco != null) {
-            enderecoService.atualizarEndereco(prestador.getPrestador_endereco_id().getEndereco_id(), endereco);
-        }
+//        // Update Endereco (if provided)
+//        Endereco endereco = prestadorDTO.getPrestadorEndereco();
+//        if (endereco != null) {
+//            enderecoService.atualizarEndereco(prestador.getPrestador_endereco_id().getEndereco_id(), endereco);
+//        }
 
-        // Update Telefones (if provided)
-        List<TelefoneDTO> telefoneDTOs = prestadorDTO.getTelefones();
-        if (telefoneDTOs != null && !telefoneDTOs.isEmpty()) {
-            telefoneService.excluirTelefonesPorPrestadorId(prestador.getPrestador_id());
-            List<Telefone> telefones = telefoneService.salvarTelefones(telefoneDTOs, prestador);
-            prestador.setTelefones(telefones);
-        }
+//        // Update Telefones (if provided)
+//        List<TelefoneDTO> telefoneDTOs = prestadorDTO.getTelefones();
+//        if (telefoneDTOs != null && !telefoneDTOs.isEmpty()) {
+//            telefoneService.excluirTelefonesPorPrestadorId(prestador.getPrestador_id());
+//            List<Telefone> telefones = telefoneService.salvarTelefones(telefoneDTOs, prestador);
+//            prestador.setTelefones(telefones);
+//        }
 
         // Update Servicos (if provided)
         List<ServicoDTO> servicoDTOs = prestadorDTO.getServicos();

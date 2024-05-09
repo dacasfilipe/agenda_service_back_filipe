@@ -37,6 +37,8 @@ public class PrestadorDTO implements Serializable {
     private List<TelefoneDTO> telefones;
 
 
-
+    public void setPrestadorEndereco(Endereco endereco) {
+        setPrestadorEndereco(endereco);
+    }
 }
 

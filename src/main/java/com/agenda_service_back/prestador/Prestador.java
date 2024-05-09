@@ -50,7 +50,7 @@ public class Prestador implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "prestador_endereco_id")
-    private Endereco prestador_endereco_id;
+    private Endereco endereco;
 
     @OneToMany(mappedBy = "servico_prestador_id", fetch = FetchType.EAGER)
     private List<Servico> servicos;

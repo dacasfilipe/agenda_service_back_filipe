@@ -43,10 +43,10 @@ public class Endereco implements Serializable {
     @Column(name = "endereco_bairro")
     private String endereco_bairro;
 
-    @OneToMany(mappedBy = "usuario_endereco_id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "usuario")
     private List<Usuario> usuarios;
 
-    @OneToMany(mappedBy = "prestador_endereco_id", fetch = FetchType.EAGER)
-    private Long prestadores;
+    @OneToMany(mappedBy = "prestador", fetch = FetchType.EAGER)
+    private List<Prestador> prestadores;
 
 }

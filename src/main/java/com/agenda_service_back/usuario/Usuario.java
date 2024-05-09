@@ -43,9 +43,8 @@ public class Usuario {
     @Column(name = "usuario_senha")
     private String usuario_senha;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_endereco_id", nullable = false)
-    private Long usuario_endereco_id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Endereco endereco;
 
     @OneToMany(mappedBy = "telefone_usuario_id", fetch = FetchType.EAGER)
     private List<Telefone> telefones;

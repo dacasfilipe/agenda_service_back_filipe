@@ -25,3 +25,4 @@ public class CategoriaDTO implements Serializable {
 
    }
 
+//data transfer object
